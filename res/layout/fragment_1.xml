@@ -136,7 +136,7 @@
                 android:layout_below="@id/search_img_nodata"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:text="今天还没有收入/消费"
+                android:text="今天还没有记账哦"
                 android:textColor="#b3b4b7"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -147,7 +147,7 @@
                 android:layout_below="@id/lv_text1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:text="赶紧买买买！"
+                android:text="赶快记一笔吧"
                 android:textColor="#b3b4b7"
                 android:textSize="20sp"
                 android:textStyle="bold" />
