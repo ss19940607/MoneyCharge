@@ -1,7 +1,6 @@
 package com.cwp.pattern;
 
 import com.cwp.chart.SystemBarTintManager;
-import com.cwp.cmoneycharge.About;
 import com.cwp.cmoneycharge.CrashApplication;
 import com.cwp.cmoneycharge.R;
 import com.cwp.cmoneycharge.SysApplication;

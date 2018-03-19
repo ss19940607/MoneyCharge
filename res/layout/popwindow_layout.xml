@@ -57,34 +57,7 @@
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal" >
 
-            <LinearLayout
-                android:id="@+id/pop_photo"
-                android:layout_width="69.329987dip"
-                android:layout_height="63.329987dip"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:layout_width="36.666595dip"
-                    android:layout_height="36.666595dip"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="1.0dip"
-                    android:src="@drawable/write_operation_photo"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5.0dip"
-                    android:shadowColor="#ff000000"
-                    android:shadowDx="1.0"
-                    android:shadowDy="1.0"
-                    android:shadowRadius="1.0"
-                    android:text="拍照记账"
-                    android:textColor="#ffffffff"
-                    android:textSize="13.0dip" />
-            </LinearLayout>
+           
 
             <LinearLayout
                 android:id="@+id/pop_voice"

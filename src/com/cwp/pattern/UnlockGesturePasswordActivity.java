@@ -3,9 +3,7 @@ package com.cwp.pattern;
 import java.util.List;
 
 import com.cwp.chart.SystemBarTintManager;
-import com.cwp.cmoneycharge.About;
 import com.cwp.cmoneycharge.CrashApplication;
-import com.cwp.cmoneycharge.Description;
 import com.cwp.cmoneycharge.DialogShowUtil;
 import com.cwp.cmoneycharge.R;
 import com.cwp.cmoneycharge.SysApplication;

@@ -356,7 +356,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 			textView.setTextColor(chartProp.getColor());
 		};
 	};
-	private LinearLayout pop_photoView;
+//	private LinearLayout pop_photoView;
 	DecimalFormat df = new DecimalFormat("#.00");
 
 	/**
@@ -463,9 +463,6 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 			break;
 		case R.id.pop_quick:
 			clickPop_quickBtn();
-			break;
-		case R.id.pop_photo:
-			clickPop_photoViewBtn();
 			break;
 		case R.id.panytime:
 			getAnyDate();
@@ -576,11 +573,10 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 				.findViewById(R.id.pop_voice);
 		pop_quickView = (LinearLayout) popWinLayout
 				.findViewById(R.id.pop_quick);
-		pop_photoView = (LinearLayout) popWinLayout
-				.findViewById(R.id.pop_photo);
+	
 		pop_voiceView.setOnClickListener(this);
 		pop_quickView.setOnClickListener(this);
-		pop_photoView.setOnClickListener(this);
+	
 
 		// 设置允许在外点击消失
 		popWindow.setOutsideTouchable(true);

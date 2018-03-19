@@ -54,7 +54,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	private LinearLayout pop_quickView;
 
 	int value = 0;
-	private LinearLayout pop_photoView;
+
 
 	static FragmentActivity act;
 
@@ -167,9 +167,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 		case R.id.pop_quick:
 			clickPop_quickBtn();
 			break;
-		case R.id.pop_photo:
-			clickPop_photoViewBtn();
-			break;
+	
 		}
 	}
 
@@ -208,11 +206,10 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 				.findViewById(R.id.pop_voice);
 		pop_quickView = (LinearLayout) popWinLayout
 				.findViewById(R.id.pop_quick);
-		pop_photoView = (LinearLayout) popWinLayout
-				.findViewById(R.id.pop_photo);
+	
 		pop_voiceView.setOnClickListener(this);
 		pop_quickView.setOnClickListener(this);
-		pop_photoView.setOnClickListener(this);
+	
 
 		// 设置允许在外点击消失
 		popWindow.setOutsideTouchable(true);

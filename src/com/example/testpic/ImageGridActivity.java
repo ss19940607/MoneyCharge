@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import com.cwp.cmoneycharge.About;
-import com.cwp.cmoneycharge.MainActivity;
 import com.cwp.cmoneycharge.R;
 import com.example.testpic.ImageGridAdapter.TextCallback;
 

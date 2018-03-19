@@ -7,7 +7,6 @@
        <item>收入类型管理</item>
        <item>支出类型管理</item>
        <item>还原默认设置</item> 
-       <item>关于系统</item>
    </string-array> 
    <string-array name="time_month">
        <item>01</item>

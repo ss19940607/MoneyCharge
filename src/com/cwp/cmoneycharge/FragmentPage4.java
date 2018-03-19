@@ -92,12 +92,12 @@ public class FragmentPage4 extends BaseFrament {
 				case 5:
 					alarmDialog(pos); // 数据初始化
 					break;
-				case 6:
+				/*case 6:
 					// 关于系统
 					intentr = new Intent(getActivity(), About.class);
 					intentr.putExtra("cwp.id", userid);
 					startActivity(intentr);
-					break;
+					break;*/
 				}
 			}
 
