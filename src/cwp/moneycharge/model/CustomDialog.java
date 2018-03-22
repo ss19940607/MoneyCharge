@@ -25,7 +25,7 @@ import android.widget.TextView;
  * Under GPL v3 : http://www.gnu.org/licenses/gpl-3.0.html
  * 
  * <a href="http://my.oschina.net/arthor" target="_blank" rel="nofollow">@author</a> antoine vianey
- *
+ *CustomDialog实现自定义的对话框的样式
  */
 public class CustomDialog extends Dialog {
  

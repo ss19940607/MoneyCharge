@@ -34,8 +34,13 @@ import com.nineoldandroids.view.ViewHelper;
  * Acknowledgements daimajia
  * https://github.com/daimajia
  */
-public abstract  class BaseEffects {
 
+//所有动画类型都继承自抽象类BaseEffects
+
+public abstract  class BaseEffects {
+	
+
+	
     private static final int DURATION = 1 * 700;
 
     protected long mDuration =DURATION ;

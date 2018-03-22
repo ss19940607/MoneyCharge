@@ -7,13 +7,20 @@ import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 
-public class SysApplication extends Application {
-private List<Activity> mList = new LinkedList<Activity>();
-private static SysApplication instance;
+//一个类 用来结束所有后台activity
 
+public class SysApplication extends Application {
+	
+//运用list来保存们每一个activity是关键
+private List<Activity> mList = new LinkedList<Activity>();
+//为了实现每次使用该类时不创建新的对象而创建的静态对象
+private static SysApplication instance;
+//构造方法
 private SysApplication() {
 }
 
+
+//实例化一次
 public synchronized static SysApplication getInstance() {
    if (null == instance) {
          instance = new SysApplication();
@@ -21,11 +28,14 @@ public synchronized static SysApplication getInstance() {
          return instance;
       }
 
+
 // add Activity
 public void addActivity(Activity activity) {
       mList.add(activity);
 }
 
+
+//关闭每一个list内的activity
     public void exit() {
         try {
            for (Activity activity : mList) {
@@ -38,7 +48,9 @@ public void addActivity(Activity activity) {
                 System.exit(0);
              }
 }
-
+    
+    
+//杀进程
 @Override
 public void onLowMemory() {
     super.onLowMemory();

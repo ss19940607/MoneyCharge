@@ -65,6 +65,8 @@ public class FragmentPage4 extends BaseFrament {
 					long arg3) {
 				String result = arg0.getItemAtPosition(pos).toString();
 				Intent intent = getActivity().getIntent();// 创建Intent对象
+				//intent主要是关于需要实现的意图，将自己想要实现的动作发送给系统
+				//详解见下面的页面：http://blog.csdn.net/harvic880925/article/details/38399723
 				userid = intent.getIntExtra("cwp.id", 100000001);
 				switch (pos) {
 				case 0:

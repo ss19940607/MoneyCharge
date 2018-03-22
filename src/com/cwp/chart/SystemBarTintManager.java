@@ -47,6 +47,7 @@ public class SystemBarTintManager {
 
     /**
      * The default system bar tint color value.
+     * 沉浸式通知栏的简单实现(SystemBarTintManager)
      */
     public static final int DEFAULT_TINT_COLOR = 0x99000000;
 

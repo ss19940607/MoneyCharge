@@ -59,7 +59,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		sp = this.getSharedPreferences("preferences", MODE_WORLD_READABLE);
 		edit = sp.edit();
 		// initdefault();// 初始化数据
-
+		
+        //沉浸式通知栏
 		SystemBarTintManager mTintManager;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			setTranslucentStatus(true);
@@ -69,16 +70,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTintManager.setStatusBarTintResource(R.color.statusbar_bg);
 
 		fragmentPage2 = new FragmentPage2(this);
-		// 得到Fragment事务管理器
+		//得到Fragment事务管理器
+	    //开启事务，fragment的控制是由事务来实现的  
 		FragmentTransaction fragmentTransaction = this
 				.getSupportFragmentManager().beginTransaction();
-		// 替换当前的页面
+		//替换当前的页面
 		fragmentTransaction.replace(R.id.frame_foot, fragmentPage2);
 		fragmentTransaction.commit();
-
+		//SysApplication一个类 用来结束所有后台activity
 		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
 		Intent intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+		userid = intentr.getIntExtra("cwp.id", 100000001);//默认用户
 		if (intentr.getStringExtra("cwp.Fragment") != null) { // 取回跳转的目的页面
 			value = Integer.parseInt(intentr.getStringExtra("cwp.Fragment"));
 		}
@@ -108,7 +110,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) { // 监控/拦截/屏蔽返回键
+		if (keyCode == KeyEvent.KEYCODE_BACK) { //监控/拦截/屏蔽返回键
 			dialogShowUtil.dialogShow("shake", "quit", "", "");
 		}
 		return super.onKeyDown(keyCode, event);

@@ -126,8 +126,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/image_cry_man" />
+                android:layout_marginTop="40dp"/>
+              
 
             <TextView
                 android:id="@+id/lv_text1"
