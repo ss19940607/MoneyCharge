@@ -11,9 +11,28 @@
         android:orientation="vertical"
         android:paddingTop="20dp" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="#54a800"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/lvtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="2015-4-10"
+                android:textColor="#602a08"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="15dp"
@@ -66,9 +85,8 @@
 
         <Button
             android:id="@+id/add_expense_quickly_btn"
-            android:layout_width="310dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/main_add_expense_quickly"
@@ -76,26 +94,8 @@
             android:textColor="#ffffff"
             android:textSize="26dp"
             android:textStyle="bold" />
+
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffca39"
-        android:orientation="vertical"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp" >
-
-        <TextView
-            android:id="@+id/lvtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="2015-4-10"
-            android:textColor="#602a08"
-            android:textSize="20dp" />
-    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -110,6 +110,7 @@
             android:id="@+id/lvoutaccountinfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.88"
             android:cacheColorHint="@android:color/transparent"
             android:listSelector="@drawable/selector"
             android:scrollbarAlwaysDrawVerticalTrack="true" />
@@ -126,8 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"/>
-              
+                android:layout_marginTop="40dp" />
 
             <TextView
                 android:id="@+id/lv_text1"
