@@ -539,7 +539,7 @@ public class PieView extends View implements View.OnTouchListener, Runnable {
 			m_x = x3;
 			m_y = y3;
 			tounched = true;
-
+			
 		}
 
 		if (event.getAction() == MotionEvent.ACTION_UP) {

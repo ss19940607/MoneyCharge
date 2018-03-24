@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class PieChart extends ViewGroup {
-
+//±ý×´Í¼PieChart
 	public PieChart(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
