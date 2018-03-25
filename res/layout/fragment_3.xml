@@ -9,7 +9,7 @@
         android:id="@+id/top3"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="#ff8e6b"
+        android:background="#54a800"
         android:orientation="vertical" >
     </LinearLayout>
 
@@ -22,7 +22,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#ff8e6b"
+            android:background="#54a800"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip" >

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.nineoldandroids.animation.ValueAnimator;
 
 import java.text.DecimalFormat;
-
+// 数字动画自定义,android实现余额宝收益播报中数字显示动态效果
 public class RiseNumberTextView extends TextView implements RiseNumberBase {
 
 	private static final int STOPPED = 0;
