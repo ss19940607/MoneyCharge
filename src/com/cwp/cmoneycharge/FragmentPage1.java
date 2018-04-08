@@ -86,6 +86,9 @@ public class FragmentPage1 extends BaseFrament {
 	public void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();// 实现基类中的方法// 调用自定义方法显示收入信息
+		
+		try {
+		//拿到宿主Activty,(我感觉这个宿主Activity是MainActivity)，宿主Activity中肯定能通过getIntent拿到Intent，然后通过get方法，随意拿参数~~
 		Intent intentr = getActivity().getIntent();
 		userid = intentr.getIntExtra("cwp.id", 100000001);
 		Showamount();
@@ -118,12 +121,20 @@ public class FragmentPage1 extends BaseFrament {
 			@Override
 			public void onClick(View arg0) {
 				// Intent intent = new Intent(getActivity(), AddIncome.class);
-				Intent intent = new Intent(getActivity(), AddPay.class);// 创建Intent对象
+				
+				//创建Intent对象，参数分别为上下文，要跳转的Activity类
+				Intent intent = new Intent(getActivity(), AddPay.class);
+				//putExtra("A",B)中，AB为键值对，第一个参数为键名，第二个参数为键对应的值。
+				//将要传递的值附加到Intent对象，将值传递到要跳转的Activity界面，这里是传递到了AddPay.class界面
 				intent.putExtra("cwp.id", userid);
 				intent.putExtra("keyboard", "true");
+				//启动该Intent对象，实现跳转
 				startActivity(intent);
 			}
 		});
+		}catch (Throwable e) {
+			Toast.makeText(getActivity(), "errr"+e, Toast.LENGTH_LONG).show();  
+		}
 	}
 
 	private void Showamount() {

@@ -63,7 +63,7 @@ public class SearchActivity extends Activity {
 	EditText query_dialog;
 	ListView mListView;
 	LinearLayout mlayout;
-	private int userid;
+//	private int userid;
 
 	IncomeDAO incomeDAO = new IncomeDAO(this);
 	PtypeDAO ptypeDAO = new PtypeDAO(this);
@@ -132,7 +132,7 @@ public class SearchActivity extends Activity {
 
 	public void init() {
 		Intent intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
 
 		mlayout = (LinearLayout) findViewById(R.id.mlayout);// 获取金额文本框
 		search_list_timeall = (LinearLayout) findViewById(R.id.search_list_timeall);// 获取金额文本框
@@ -184,8 +184,8 @@ public class SearchActivity extends Activity {
 					}
 				});
 
-		spdatalistpay = ptypeDAO.getPtypeName(userid);
-		spdatalistincome = itypeDAO.getItypeName(userid);
+		spdatalistpay = ptypeDAO.getPtypeName(AccountName.getInstance().getCurrentAccountId());
+		spdatalistincome = itypeDAO.getItypeName(AccountName.getInstance().getCurrentAccountId());
 		spdatapay = spdatalistpay.toArray(new String[spdatalistpay.size()]);// 在tb_itype中按用户id读取
 		spdataincome = spdatalistincome.toArray(new String[spdatalistincome
 				.size()]);// 在tb_itype中按用户id读取
@@ -289,7 +289,7 @@ public class SearchActivity extends Activity {
 					} else {
 						String = text.toString();
 					}
-					List<Tb_income> listinfosall = incomeDAO.searchALL(userid,
+					List<Tb_income> listinfosall = incomeDAO.searchALL(AccountName.getInstance().getCurrentAccountId(),
 							search_starttime.getText() + "",
 							search_endtime.getText() + "", resultpay,
 							resultincome, String);
@@ -323,7 +323,7 @@ public class SearchActivity extends Activity {
 							intent.putExtra("cwp.message", new String[] {
 									strno, "btnoutinfo" });// 设置传递数据
 						}
-						intent.putExtra("cwp.id", userid);
+						intent.putExtra("cwp.id", AccountName.getInstance().getCurrentAccountId());
 						intent.putExtra("cwp.search", "search");
 						startActivityForResult(intent, 101);// 执行Intent操作
 					}
@@ -629,7 +629,7 @@ public class SearchActivity extends Activity {
 	}
 
 	protected void update(String string) {
-		List<Tb_income> listinfos2 = incomeDAO.search(userid, string);
+		List<Tb_income> listinfos2 = incomeDAO.search(AccountName.getInstance().getCurrentAccountId(), string);
 		dispay(listinfos2);
 	}
 
@@ -651,13 +651,13 @@ public class SearchActivity extends Activity {
 				if (tb_income.getKind().equals("收入")) { // 收入
 					Map<String, Object> map = new HashMap<String, Object>();
 					map.put("img",
-							itypeDAO.getOneImg(userid, tb_income.getType()));
+							itypeDAO.getOneImg(AccountName.getInstance().getCurrentAccountId(), tb_income.getType()));
 					map.put("no", tb_income.getNo() + "");
 					map.put("kind", "[" + tb_income.getKind() + "]");
 					map.put("address", tb_income.getHandler());
 					map.put("money", "￥ " + tb_income.getMoney2() + "元");
 					map.put("title",
-							itypeDAO.getOneName(userid, tb_income.getType()));
+							itypeDAO.getOneName(AccountName.getInstance().getCurrentAccountId(), tb_income.getType()));
 					map.put("info", tb_income.getTime());
 					map.put("date",
 							FragmentPage3.gofordate(tb_income.getTime()));
@@ -667,13 +667,13 @@ public class SearchActivity extends Activity {
 				} else { // 支出
 					Map<String, Object> map = new HashMap<String, Object>();
 					map.put("img",
-							ptypeDAO.getOneImg(userid, tb_income.getType()));
+							ptypeDAO.getOneImg(AccountName.getInstance().getCurrentAccountId(), tb_income.getType()));
 					map.put("no", tb_income.getNo() + "");
 					map.put("kind", "[" + tb_income.getKind() + "]");
 					map.put("address", tb_income.getHandler());
 					map.put("money", "￥ " + tb_income.getMoney2() + "元");
 					map.put("title",
-							ptypeDAO.getOneName(userid, tb_income.getType()));
+							ptypeDAO.getOneName(AccountName.getInstance().getCurrentAccountId(), tb_income.getType()));
 					map.put("info", tb_income.getTime());
 					map.put("date",
 							FragmentPage3.gofordate(tb_income.getTime()));

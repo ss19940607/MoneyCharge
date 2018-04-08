@@ -108,7 +108,7 @@ public class PtypeDAO {
 	 *            每页显示数量
 	 * @return
 	 */
-	public List<Tb_ptype> getScrollData(int id, int start, int count) {
+	private List<Tb_ptype> getScrollData(int id, int start, int count) {
 		List<Tb_ptype> lisTb_ptype = new ArrayList<Tb_ptype>();// 创建集合对象
 		db = helper.getWritableDatabase();// 初始化SQLiteDatabase对象
 		// 获取所有便签信息
@@ -132,7 +132,7 @@ public class PtypeDAO {
 	 * 
 	 * @return
 	 */
-	public long getCount() {
+	private long getCount() {
 		db = helper.getWritableDatabase();// 初始化SQLiteDatabase对象
 		Cursor cursor = db.rawQuery("select count(no) from tb_ptype", null);// 获取支出类型的记录数
 		if (cursor.moveToNext())// 判断Cursor中是否有数据
@@ -159,7 +159,7 @@ public class PtypeDAO {
 	 * 
 	 * @return
 	 */
-	public int getMaxId() {
+	private int getMaxId() {
 		db = helper.getWritableDatabase();// 初始化SQLiteDatabase对象
 		Cursor cursor = db.rawQuery("select max(no) from tb_ptype", null);// 获取收入类型表中的最大编号
 		while (cursor.moveToLast()) {// 访问Cursor中的最后一条数据

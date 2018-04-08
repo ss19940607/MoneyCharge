@@ -15,12 +15,14 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
+		
 		//用户表
 		db.execSQL("create  table tb_account (_id INTEGER  PRIMARY KEY AUTOINCREMENT  NOT NULL,username varchar(20) ,pwd VARCHAR(50) DEFAULT '000000' NOT NULL)");
 		//支出类型表
 		db.execSQL("create  table tb_ptype(_id INTEGER   NOT NULL ,no integer not null,typename varchar(50) )");
 		//收入类型表
 		db.execSQL("create   table tb_itype(_id INTEGER   NOT NULL,no integer  not null ,typename varchar(50) )");
+		
 		// 支出信息表
 		db.execSQL("create   table tb_pay (_id INTEGER  NOT NULL,no INTEGER  NOT NULL ,money decimal,time varchar(10),"
 				+ "type integer,address varchar(100),mark varchar(200),photo varchar(200),kind varchar(10))");
@@ -31,6 +33,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 		
 		// 便签信息表
 		db.execSQL("create  table tb_note (_id integer  ,no integer ,note varchar(200))");
+				
 		db.execSQL("insert into tb_account(_id,username,pwd) values(100000001,\"默认用户\",\"000000\")");
 		
 		//初始化数据 收入类型表格

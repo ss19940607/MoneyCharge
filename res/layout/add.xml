@@ -234,7 +234,8 @@
                                     android:singleLine="false"
                                     android:hint="请输入..." />
 
-                                <ImageView
+                             
+                               <ImageView
                                     android:id="@+id/btn_loacte"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -242,6 +243,7 @@
                                     android:layout_marginRight="20dp"
                                     android:layout_marginTop="5dp"
                                     android:background="@drawable/locate_btn" />
+                                  
                             </FrameLayout>
 
                             <FrameLayout

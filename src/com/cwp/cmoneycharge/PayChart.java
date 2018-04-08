@@ -13,7 +13,6 @@ import com.cwp.chart.MenuFragment;
 import com.cwp.chart.MyButton;
 import com.cwp.chart.PieView;
 import com.cwp.chart.SystemBarTintManager;
-import com.cwp.pattern.UnlockGesturePasswordActivity;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingActivity;
 
@@ -192,9 +191,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 		CrashApplication myApplaction = (CrashApplication) getApplication();
 		if ((myApplaction.isLocked)
 				&& (sp.getString("gesturepw", "").equals("开"))) {// 判断是否需要跳转到密码界面
-			Intent intent = new Intent(this,
-					UnlockGesturePasswordActivity.class);
-			startActivity(intent);
+			
 		}
 	}
 

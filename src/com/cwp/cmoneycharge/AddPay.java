@@ -2,11 +2,9 @@ package com.cwp.cmoneycharge;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -24,7 +22,6 @@ import com.cwp.cmoneycharge.Effectstype;
 import com.cwp.cmoneycharge.KeyboardUtil;
 import com.cwp.cmoneycharge.MainActivity;
 import com.cwp.cmoneycharge.NiftyDialogBuilder;
-import com.cwp.pattern.UnlockGesturePasswordActivity;
 import com.example.testpic.Bimp;
 import com.example.testpic.PublishedActivity;
 
@@ -32,24 +29,18 @@ import cwp.moneycharge.dao.IncomeDAO;
 import cwp.moneycharge.dao.ItypeDAO;
 import cwp.moneycharge.dao.PayDAO;
 import cwp.moneycharge.dao.PtypeDAO;
-import cwp.moneycharge.model.Datapicker;
 import cwp.moneycharge.model.Tb_income;
 import cwp.moneycharge.model.Tb_pay;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -60,7 +51,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -73,8 +63,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -150,7 +138,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.add);// 设置布局文件
 
-		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
+		SysApplication.getInstance().addActivity(this); //在销毁队列中添加this
 		super.onStart();// 实现基类中的方法
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -384,8 +372,11 @@ public class AddPay extends Activity implements AMapLocationListener,
 	protected void onStart() { // 复写onstart
 		super.onStart();// 实现基类中的方法
 		updateDisplay();// 显示当前系统时间
-
+		
+		//intent实现Activity之间的交流，通讯，跳转
+		//取得启动该Activity的Intent对象,这个对象是由FragmentPage1的Activity跳转过来的
 		Intent intentr = getIntent();
+        /*取出Intent中附加的数据*/
 		userid = intentr.getIntExtra("cwp.id", 100000001);
 		bundle = intentr.getExtras();// 获取传入的数据，并使用Bundle记录
 		if (bundle.containsKey("cwp.message")) {
@@ -473,13 +464,14 @@ public class AddPay extends Activity implements AMapLocationListener,
 								if (!strMoney.isEmpty()) {// 判断金额不为空
 									// 创建InaccountDAO对象
 									PayDAO payDAO = new PayDAO(AddPay.this);
+									int ptype =spType.getSelectedItemPosition()+1;
 									// 创建Tb_inaccount对象
 									Tb_pay tb_pay = new Tb_pay(
 											userid,
 											payDAO.getMaxNo(userid) + 1,
 											get2Double(strMoney),
 											setTimeFormat(null),
-											(spType.getSelectedItemPosition() + 1),
+											ptype,
 											textreAddres, textreMark, textphoto);
 									payDAO.add(tb_pay);// 添加收入信息
 									Toast.makeText(AddPay.this,
@@ -974,9 +966,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		CrashApplication myApplaction = (CrashApplication) getApplication();
 		if ((myApplaction.isLocked)
 				&& (sp.getString("gesturepw", "").equals("开"))) {// 判断是否需要跳转到密码界面
-			Intent intent = new Intent(this,
-					UnlockGesturePasswordActivity.class);
-			startActivity(intent);
+			
 		}
 	}
 

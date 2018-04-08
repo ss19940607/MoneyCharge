@@ -5,7 +5,6 @@ import java.util.Calendar;
 import com.cwp.chart.SystemBarTintManager;
 import com.cwp.cmoneycharge.AddPay;
 import com.cwp.cmoneycharge.R;
-import com.cwp.pattern.UnlockGesturePasswordActivity;
 import com.cwp.pattern.UpdateManager;
 
 import android.annotation.TargetApi;
@@ -35,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 	// 定义Fragment页面
@@ -81,6 +81,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
 		Intent intentr = getIntent();
 		userid = intentr.getIntExtra("cwp.id", 100000001);//默认用户
+//		Toast.makeText(MainActivity.this, "userid="+userid, Toast.LENGTH_SHORT);
 		if (intentr.getStringExtra("cwp.Fragment") != null) { // 取回跳转的目的页面
 			value = Integer.parseInt(intentr.getStringExtra("cwp.Fragment"));
 		}
@@ -138,9 +139,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		CrashApplication myApplaction = (CrashApplication) getApplication();
 		if ((myApplaction.isLocked)
 				&& (sp.getString("gesturepw", "").equals("开"))) {// 判断是否需要跳转到密码界面
-			Intent intent = new Intent(this,
-					UnlockGesturePasswordActivity.class);
-			startActivity(intent);
+			
 		}
 
 		if (!updatedate.equals(sp.getString("updatedate", ""))) { // 今天已经检查过就不自动检查了

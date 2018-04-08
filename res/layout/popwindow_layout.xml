@@ -114,7 +114,7 @@
                     android:shadowDx="1.0"
                     android:shadowDy="1.0"
                     android:shadowRadius="1.0"
-                    android:text="快速记账"
+                    android:text="手工记账"
                     android:textColor="#ffffffff"
                     android:textSize="13.0dip" />
             </LinearLayout>

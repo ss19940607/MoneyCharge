@@ -14,6 +14,9 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import com.cwp.cmoneycharge.AccountName;
+
 import cwp.moneycharge.model.*;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -27,7 +30,7 @@ public class PayDAO {
 	private DBOpenHelper helper;// 创建DBOpenHelper对象
 	private SQLiteDatabase db;// 创建SQLiteDatabase对象
 	private int no = 1;// 编号
-	private int userid = 100000001;
+//	private int userid = 100000001;
 
 	public PayDAO(Context context) {
 		// TODO Auto-generated constructor stub
@@ -230,7 +233,7 @@ public class PayDAO {
 		Cursor cursor = db
 				.rawQuery(
 						"select total(money) as tmoney from tb_pay  where time >= ? and time <= ? and  _id =?",
-						new String[] { date1, date2, String.valueOf(userid) });// 获取支出信息表中的最大编号
+						new String[] { date1, date2, String.valueOf(AccountName.getInstance().getCurrentAccountId()) });// 获取支出信息表中的最大编号
 		while (cursor.moveToNext())// 遍历所有的支出信息
 		{
 
@@ -249,7 +252,7 @@ public class PayDAO {
 		String d1, d2;
 		d1 = String.valueOf(year) + "-";
 		d2 = String.valueOf(year) + "-";
-		userid = id;
+//		userid = id;
 		no = 1;
 		switch (month) {
 		case 1:
@@ -321,7 +324,7 @@ public class PayDAO {
 
 	public List<Datapicker> getDataAnytime(int id, String date1, String date2) {
 
-		userid = id;
+//		userid = id;
 		no = 1;
 
 		List<Datapicker> datapickerlist = new ArrayList<Datapicker>();

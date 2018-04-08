@@ -43,7 +43,7 @@ public class DialogShowUtil {
 					// def
 					.withDividerColor("#11000000")
 					// def
-					.withMessage("语音格式：\n早餐在餐厅食了20元。\n\n")
+					.withMessage("语音格式：\n早餐在餐厅食了5元。\n\n")
 					// .withMessage(null) no Msg
 					.withMessageColor("#FFFFFF")
 					// def
