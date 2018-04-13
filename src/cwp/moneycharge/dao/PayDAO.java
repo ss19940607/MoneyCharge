@@ -15,7 +15,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.cwp.cmoneycharge.AccountName;
 
 import cwp.moneycharge.model.*;
 import android.annotation.SuppressLint;
@@ -226,14 +225,14 @@ public class PayDAO {
 		return data;
 	}
 
-	public Datapicker getDataOnDay(String date1, String date2) {
+	public Datapicker getDataOnDay(int userid,String date1, String date2) {
 		db = helper.getWritableDatabase();// 初始化SQLiteDatabase对象
 		Double data = 0.0;
 		Datapicker datapicker;
 		Cursor cursor = db
 				.rawQuery(
 						"select total(money) as tmoney from tb_pay  where time >= ? and time <= ? and  _id =?",
-						new String[] { date1, date2, String.valueOf(AccountName.getInstance().getCurrentAccountId()) });// 获取支出信息表中的最大编号
+						new String[] { date1, date2, String.valueOf(userid) });// 获取支出信息表中的最大编号
 		while (cursor.moveToNext())// 遍历所有的支出信息
 		{
 
@@ -248,7 +247,7 @@ public class PayDAO {
 
 	} // 返回集合
 
-	public List<Datapicker> getDataMonth(int id, int year, int month) {
+	public List<Datapicker> getDataMonth(int userid, int year, int month) {
 		String d1, d2;
 		d1 = String.valueOf(year) + "-";
 		d2 = String.valueOf(year) + "-";
@@ -314,7 +313,7 @@ public class PayDAO {
 		Datapicker datapicker;
 		for (String temp = d1; temp.compareTo(d2) <= 0;) {
 			// 创建集合对象
-			datapicker = getDataOnDay(temp, temp);
+			datapicker = getDataOnDay(userid,temp, temp);
 			datapickerlist.add(datapicker);
 			temp = addDays(temp, 1);
 		}
@@ -322,7 +321,7 @@ public class PayDAO {
 		return datapickerlist;
 	}
 
-	public List<Datapicker> getDataAnytime(int id, String date1, String date2) {
+	public List<Datapicker> getDataAnytime(int userid, String date1, String date2) {
 
 //		userid = id;
 		no = 1;
@@ -331,7 +330,7 @@ public class PayDAO {
 		Datapicker datapicker;
 		for (String temp = date1; temp.compareTo(date2) <= 0;) {
 			// 创建集合对象
-			datapicker = getDataOnDay(temp, temp);
+			datapicker = getDataOnDay(userid,temp, temp);
 			datapickerlist.add(datapicker);
 			temp = addDays(temp, 1);
 		}

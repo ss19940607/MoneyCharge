@@ -38,7 +38,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
 public class FragmentPage1 extends BaseFrament {
-	int userid;
+//	int userid;
 	Button baddpay;
 	TextView income_amount;
 	TextView expense_amount;
@@ -90,7 +90,8 @@ public class FragmentPage1 extends BaseFrament {
 		try {
 		//拿到宿主Activty,(我感觉这个宿主Activity是MainActivity)，宿主Activity中肯定能通过getIntent拿到Intent，然后通过get方法，随意拿参数~~
 		Intent intentr = getActivity().getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		int userid = intentr.getIntExtra("cwp.id", Acc);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		Showamount();
 		ShowInfo(R.id.btnoutinfo);
 		lvinfo.setOnItemClickListener(new OnItemClickListener()// 为ListView添加项单击事件
@@ -113,7 +114,7 @@ public class FragmentPage1 extends BaseFrament {
 					intent.putExtra("cwp.message", new String[] { strno,
 							"btnoutinfo" });// 设置传递数据
 				}
-				intent.putExtra("cwp.id", userid);
+//				intent.putExtra("cwp.id", userid);
 				startActivity(intent);// 执行Intent操作
 			}
 		});
@@ -126,7 +127,7 @@ public class FragmentPage1 extends BaseFrament {
 				Intent intent = new Intent(getActivity(), AddPay.class);
 				//putExtra("A",B)中，AB为键值对，第一个参数为键名，第二个参数为键对应的值。
 				//将要传递的值附加到Intent对象，将值传递到要跳转的Activity界面，这里是传递到了AddPay.class界面
-				intent.putExtra("cwp.id", userid);
+//				intent.putExtra("cwp.id", userid);
 				intent.putExtra("keyboard", "true");
 				//启动该Intent对象，实现跳转
 				startActivity(intent);
@@ -142,6 +143,7 @@ public class FragmentPage1 extends BaseFrament {
 		IncomeDAO incomedao = new IncomeDAO(getActivity()
 				.getApplicationContext());// 创建IncomeDAO对象
 		// 获取所有收入信息，并存储到List泛型集合中
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		Double incomeamount = incomedao.getamountData(userid);
 		Double payamount = paydao.getamountData(userid);
 		income_amount.setText("¥ " + incomeamount);
@@ -151,6 +153,7 @@ public class FragmentPage1 extends BaseFrament {
 	private void ShowInfo(int intType) {// 用来根据传入的管理类型，显示相应的信息
 		strType = "btnoutinfo";// 为strType变量赋值
 		PayDAO paydao = new PayDAO(getActivity().getApplicationContext());// 创建PayDAO对象
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		// 获取所有收入信息，并存储到List泛型集合中
 		List<Tb_pay> listinfos = paydao.getScrollData(userid, 0,
 				(int) paydao.getCount(userid));

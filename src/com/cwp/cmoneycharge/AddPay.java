@@ -77,7 +77,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 	Button btnSaveButton;// 创建Button对象“保存”
 	Button btnCancelButton;// 创建Button对象“取消”
 	Button btnVoice;// 创建Button对象“语音识别”
-	int userid;
+//	int userid;
 	int Selection = 0;
 	Bundle bundle = null;
 	String[] strInfos = null;// 定义字符串数组
@@ -182,7 +182,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		addphoto.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(AddPay.this, PublishedActivity.class);
-				intent.putExtra("cwp.id", userid);
+//				intent.putExtra("cwp.id", userid);
 				startActivityForResult(intent, 102);
 			}
 		});
@@ -208,7 +208,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 				} else {
 					intent = new Intent(AddPay.this, MainActivity.class);
 				}
-				intent.putExtra("cwp.id", userid);
+//				intent.putExtra("cwp.id", userid);
 				startActivity(intent);
 				finish();// 这个是关键
 			}
@@ -358,6 +358,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 	}
 
 	private void updatetype() { // 更新类别
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		initData(userid);
 		spdata = spdatalist.toArray(new String[spdatalist.size()]);// 在tb_itype中按用户id读取
 		adapter = new ArrayAdapter<String>(AddPay.this, R.layout.spinner,
@@ -377,7 +378,8 @@ public class AddPay extends Activity implements AMapLocationListener,
 		//取得启动该Activity的Intent对象,这个对象是由FragmentPage1的Activity跳转过来的
 		Intent intentr = getIntent();
         /*取出Intent中附加的数据*/
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		bundle = intentr.getExtras();// 获取传入的数据，并使用Bundle记录
 		if (bundle.containsKey("cwp.message")) {
 			strInfos = bundle.getStringArray("cwp.message");// 获取Bundle中记录的信息
@@ -453,6 +455,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 					@SuppressLint("NewApi")
 					@Override
 					public void onClick(View arg0) {
+						int userid = AccountName.getInstance().getCurrentAccountId();
 						textreAddres = txtAddress.getText().toString();
 						textreMark = txtMark.getText().toString();
 						if (textphoto == null) {
@@ -560,7 +563,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		btnCancelButton.setOnClickListener(new OnClickListener() {// 为取消按钮设置单击监听事件
 					@Override
 					public void onClick(View arg0) {
-
+						int userid = AccountName.getInstance().getCurrentAccountId();
 						if (typemode == "add") { // 添加模式执行返回
 							txtMoney.setText("");// 设置金额文本框为空
 							txtMoney.setHint("0.00");// 为金额文本框设置提示
@@ -693,7 +696,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		}
 		VoiceDefault = DialogShowUtil.dialogVoiceDefault();
 		String textreMark = txtMark.getText().toString();
-
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		if (typemode == "add") { // 添加模式
 			if (type == "pay") { // 支出
 				rb1.setChecked(true);
@@ -777,6 +780,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		Boolean ismoney = false, intype = false, outtype = false;
 		Boolean voice_ptype = false, voice_intype = false;
 		String w = "", strmoney = "", inname = "1", outname = "2";
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		spdatalist = ptypeDAO.getPtypeName(userid);
 		spdatalist2 = itypeDAO.getItypeName(userid);
 		VoiceSave[2] = t;
@@ -926,7 +930,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 			intent = new Intent(AddPay.this, MainActivity.class);
 			intent.putExtra("cwp.Fragment", "1");
 		}
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		startActivity(intent);
 		finish();
 		return true;

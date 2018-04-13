@@ -27,7 +27,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class FragmentPage4 extends BaseFrament {
 
-	int userid;
+//	int userid;
 	Intent intentr;
 	private ListView listview;
 
@@ -58,16 +58,17 @@ public class FragmentPage4 extends BaseFrament {
 
 		super.onStart();
 		intentr = getActivity().getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
 		listview.setOnItemClickListener(new OnItemClickListener() {// 为GridView设置项单击事件
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
 					long arg3) {
 				String result = arg0.getItemAtPosition(pos).toString();
-				Intent intent = getActivity().getIntent();// 创建Intent对象
+//				Intent intent = getActivity().getIntent();// 创建Intent对象
 				//intent主要是关于需要实现的意图，将自己想要实现的动作发送给系统
 				//详解见下面的页面：http://blog.csdn.net/harvic880925/article/details/38399723
-				userid = intent.getIntExtra("cwp.id", 100000001);
+//				userid = intent.getIntExtra("cwp.id", 100000001);
+				int userid = AccountName.getInstance().getCurrentAccountId();
 				switch (pos) {
 				case 0:
 					alarmDialog(pos);// 清空收入数据
@@ -111,7 +112,6 @@ public class FragmentPage4 extends BaseFrament {
 		String ps = "收入数据", is = "支出数据";
 		CustomDialog.Builder customBuilder = new CustomDialog.Builder(getView()
 				.getContext());
-
 		customBuilder.setTitle("警告"); // 创建标题
 		switch (type) {
 		case 0:
@@ -124,6 +124,7 @@ public class FragmentPage4 extends BaseFrament {
 										int which) {
 									IncomeDAO incomeDAO = new IncomeDAO(
 											getActivity());
+									int userid = AccountName.getInstance().getCurrentAccountId();
 									incomeDAO.deleteUserData(userid);
 									Toast.makeText(getActivity(), "已清空~！！",
 											Toast.LENGTH_LONG).show();
@@ -150,6 +151,7 @@ public class FragmentPage4 extends BaseFrament {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									PayDAO payDAO = new PayDAO(getActivity());
+									int userid = AccountName.getInstance().getCurrentAccountId();
 									payDAO.deleteUserData(userid);
 									Toast.makeText(getActivity(), "已清空~！！",
 											Toast.LENGTH_LONG).show();
@@ -179,6 +181,7 @@ public class FragmentPage4 extends BaseFrament {
 											getActivity());
 									PtypeDAO ptypedao = new PtypeDAO(
 											getActivity());
+									int userid = AccountName.getInstance().getCurrentAccountId();
 									itypedao.initData(userid);
 									ptypedao.initData(userid);
 									Toast.makeText(getActivity(), "已还原~！！",

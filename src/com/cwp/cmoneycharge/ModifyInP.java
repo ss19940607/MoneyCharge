@@ -39,7 +39,6 @@ public class ModifyInP extends Activity{
 	Button btnEdit, btnDel;// 创建两个Button对象
 	String[] strInfos;// 定义字符串数组
 	String strno, strType;// 定义两个字符串变量，分别用来记录信息编号和管理类型
-	int userid;
 	ItypeDAO itypeDAO=new ItypeDAO(ModifyInP.this);
 	PtypeDAO ptypeDAO=new PtypeDAO(ModifyInP.this);
 	List<String> spdatalist;
@@ -80,7 +79,8 @@ public class ModifyInP extends Activity{
 		strInfos = bundle.getStringArray("cwp.message");// 获取Bundle中记录的信息
 		strno = strInfos[0];// 记录id
 		strType = strInfos[1];// 记录类型
-		userid=intent.getIntExtra("cwp.id",100000001);
+//		userid=intent.getIntExtra("cwp.id",100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		if (strType.equals("btnoutinfo"))// 如果类型是btnoutinfo
 		{
 			//选择列表初始化
@@ -130,6 +130,7 @@ public class ModifyInP extends Activity{
 		btnEdit.setOnClickListener(new OnClickListener() {// 为修改按钮设置监听事件
 			@Override
 			public void onClick(View arg0) {
+				int userid = AccountName.getInstance().getCurrentAccountId();
 				// TODO Auto-generated method stub
 				if (strType.equals("btnoutinfo"))// 判断类型如果是btnoutinfo
 				{
@@ -166,6 +167,7 @@ public class ModifyInP extends Activity{
 		btnDel.setOnClickListener(new OnClickListener() {// 为删除按钮设置监听事件
 			@Override
 			public void onClick(View arg0) {
+				int userid = AccountName.getInstance().getCurrentAccountId();
 				// TODO Auto-generated method stub
 				if (strType.equals("btnoutinfo"))// 判断类型如果是btnoutinfo
 				{
@@ -218,7 +220,7 @@ public class ModifyInP extends Activity{
 	private void gotoback(){
 		 
 		Intent intent=new Intent(ModifyInP.this,MainActivity.class);
-		intent.putExtra("cwp.id",userid);
+//		intent.putExtra("cwp.id",userid);
 		startActivity(intent);
 	}
 	

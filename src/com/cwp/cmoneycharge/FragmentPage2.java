@@ -25,7 +25,7 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
 public class FragmentPage2 extends Fragment implements OnClickListener {
-	static int userid;
+//	static int userid;
 	private static FragmentPage1 fragmentPage1;
 	private FragmentPage2 fragmentPage2;
 	private static FragmentPage3 fragmentPage3;
@@ -76,8 +76,8 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 		super.onActivityCreated(savedInstanceState);
 
 		Intent intentr = getActivity().getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
-
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		initView();
 		initData();
 
@@ -173,7 +173,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 
 	private void clickPop_photoViewBtn() {
 		Intent intent = new Intent(getActivity(), AddPay.class);// 创建Intent对象
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		intent.putExtra("cwp.photo", "");// 设置传递数据
 		startActivity(intent);
 	}
@@ -279,7 +279,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 
 		// Intent intentr = new Intent(getActivity(), PayData.class);
 		Intent intentr = new Intent(act, PayChart.class);
-		intentr.putExtra("cwp.id", userid);
+//		intentr.putExtra("cwp.id", userid);
 		intentr.putExtra("type", 0);
 		act.startActivity(intentr);
 		act.overridePendingTransition(android.R.anim.fade_in,
@@ -344,7 +344,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	private void clickPop_voiceBtn() {
 
 		Intent intent = new Intent(getActivity(), AddPay.class);// 创建Intent对象
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		intent.putExtra("cwp.voice", "");// 设置传递数据
 		startActivity(intent);
 	}
@@ -352,7 +352,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	private void clickPop_quickBtn() {
 
 		Intent intent = new Intent(getActivity(), AddPay.class);// 创建Intent对象
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		intent.putExtra("keyboard", "true");
 		startActivity(intent);
 	}

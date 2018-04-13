@@ -97,7 +97,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 	int defaultMonth, defaultDay;
 	int defaultYear;
 	Intent intentr;
-	int userid;
+//	int userid;
 	int type;
 	String datatype = "pay";
 	Adapter adapter;
@@ -229,7 +229,8 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 		date1 = Integer.toString(defaultYear) + "-01-01";
 
 		intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		defaultMonth = intentr.getIntExtra("default", defaultMonth);
 		defaultYear = intentr.getIntExtra("defaulty", defaultYear);
 
@@ -365,7 +366,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 		int i = 0;
 		int fivecolor[] = new int[] { Color.rgb(56, 220, 244), Color.GREEN,
 				Color.RED, Color.YELLOW, Color.CYAN };
-
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		if (KindDatap.size() == 0) { // 没有数据的情况
 			amount = "暂无数据"; // 无数据下总数的提示文字
 
@@ -434,6 +435,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		switch (v.getId()) {
 		case R.id.layout_friendfeed2:
 			clickSwitchBtn("1");
@@ -514,14 +516,14 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 
 	private void clickPop_photoViewBtn() {
 		Intent intent = new Intent(PayChart.this, AddPay.class);// 创建Intent对象
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		intent.putExtra("cwp.photo", "");// 设置传递数据
 		startActivity(intent);
 	}
 
 	private void clickSwitchBtn(String i) {
 		Intent intent = new Intent(PayChart.this, MainActivity.class);
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		intent.putExtra("cwp.Fragment", i);// 设置传递数据
 		startActivity(intent);
 		overridePendingTransition(android.R.anim.fade_in,
@@ -628,7 +630,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 	private void clickPop_voiceBtn() {
 
 		Intent intent = new Intent(PayChart.this, AddPay.class);// 创建Intent对象
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		intent.putExtra("cwp.voice", "");// 设置传递数据
 		startActivity(intent);
 	}
@@ -636,7 +638,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 	private void clickPop_quickBtn() {
 
 		Intent intent = new Intent(PayChart.this, AddPay.class);// 创建Intent对象
-		intent.putExtra("cwp.id", userid);
+//		intent.putExtra("cwp.id", userid);
 		startActivity(intent);
 	}
 

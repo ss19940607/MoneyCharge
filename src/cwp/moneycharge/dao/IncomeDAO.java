@@ -27,7 +27,7 @@ public class IncomeDAO {
 	private DBOpenHelper helper;// 创建DBOpenHelper对象
 	private SQLiteDatabase db;// 创建SQLiteDatabase对象
 	private int no = 1;// 编号
-	private int userid = 100000001;
+//	private int userid = 100000001;
 
 	public IncomeDAO(Context context) {
 		// TODO Auto-generated constructor stub
@@ -392,7 +392,7 @@ public class IncomeDAO {
 		return result;
 	}
 
-	public Double getamountData(int userid2) {
+	public Double getamountData(int userid) {
 		db = helper.getWritableDatabase();// 初始化SQLiteDatabase对象
 		Double data = 0.0;
 		Cursor cursor = db.rawQuery(
@@ -408,7 +408,7 @@ public class IncomeDAO {
 		return data;
 	}
 
-	public Datapicker getDataOnDay(String date1, String date2) {
+	public Datapicker getDataOnDay(int userid,String date1, String date2) {
 		db = helper.getWritableDatabase();// 初始化SQLiteDatabase对象
 		Double data = 0.0;
 		Datapicker datapicker;
@@ -430,11 +430,10 @@ public class IncomeDAO {
 
 	} // 返回集合
 
-	public List<Datapicker> getDataMonth(int id, int year, int month) {
+	public List<Datapicker> getDataMonth(int userid, int year, int month) {
 		String d1, d2;
 		d1 = String.valueOf(year) + "-";
 		d2 = String.valueOf(year) + "-";
-		userid = id;
 		no = 1;
 		switch (month) {
 		case 1:
@@ -497,7 +496,7 @@ public class IncomeDAO {
 		Datapicker datapicker;
 		for (String temp = d1; temp.compareTo(d2) <= 0;) {
 			// 创建集合对象
-			datapicker = getDataOnDay(temp, temp);
+			datapicker = getDataOnDay(userid,temp, temp);
 			datapickerlist.add(datapicker);
 			Log.i("cwp", "===========pay" + temp
 					+ datapicker.getMoney().toString());
@@ -508,16 +507,14 @@ public class IncomeDAO {
 		return datapickerlist;
 	}
 
-	public List<Datapicker> getDataAnytime(int id, String date1, String date2) {
+	public List<Datapicker> getDataAnytime(int userid, String date1, String date2) {
 
-		userid = id;
 		no = 1;
-
 		List<Datapicker> datapickerlist = new ArrayList<Datapicker>();
 		Datapicker datapicker;
 		for (String temp = date1; temp.compareTo(date2) <= 0;) {
 			// 创建集合对象
-			datapicker = getDataOnDay(temp, temp);
+			datapicker = getDataOnDay(userid,temp, temp);
 			datapickerlist.add(datapicker);
 			temp = addDays(temp, 1);
 		}

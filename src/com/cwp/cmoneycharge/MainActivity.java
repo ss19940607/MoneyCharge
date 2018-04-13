@@ -40,7 +40,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	// 定义Fragment页面
 	private FragmentPage2 fragmentPage2;
 	SharedPreferences sp;
-	int userid;
+//	int userid;
 	static int value = 0;
 	DialogShowUtil dialogShowUtil = new DialogShowUtil(this, this, null, null,
 			null);
@@ -80,7 +80,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		//SysApplication一个类 用来结束所有后台activity
 		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
 		Intent intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);//默认用户
+//		userid = intentr.getIntExtra("cwp.id", 100000001);//默认用户
+		int userid = AccountName.getInstance().getCurrentAccountId();
 //		Toast.makeText(MainActivity.this, "userid="+userid, Toast.LENGTH_SHORT);
 		if (intentr.getStringExtra("cwp.Fragment") != null) { // 取回跳转的目的页面
 			value = Integer.parseInt(intentr.getStringExtra("cwp.Fragment"));

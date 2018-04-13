@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cwp.chart.SystemBarTintManager;
+import com.cwp.cmoneycharge.AccountName;
 import com.cwp.cmoneycharge.AddPay;
 import com.cwp.cmoneycharge.R;
 import com.cwp.cmoneycharge.SysApplication;
@@ -57,7 +58,6 @@ public class PublishedActivity extends Activity {
 	private TextView activity_selectimg_send;
 	private int flag = 0;
 	private Bundle bundle;
-	private int userid;
 	private int modifysize;
 	Boolean firstin = true;
 
@@ -96,7 +96,8 @@ public class PublishedActivity extends Activity {
 
 	public void Init() {
 		Intent intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		bundle = intentr.getExtras();// 获取传入的数据，并使用Bundle记录
 		if ((bundle != null)) {
 			if ((bundle.containsKey("cwp.photo"))) {

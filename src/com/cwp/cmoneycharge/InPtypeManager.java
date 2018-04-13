@@ -44,7 +44,7 @@ public class InPtypeManager extends Activity {
 
 	private List<String> typename;
 	private ListView lv;
-	int userid, type;
+	int type;
 	Intent intentr;
 	ItypeDAO itypeDAO;
 	PtypeDAO ptypeDAO;
@@ -93,7 +93,7 @@ public class InPtypeManager extends Activity {
 		super.onStart();
 		// 获取数据
 		intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		type = intentr.getIntExtra("type", 0);
 		itypeDAO = new ItypeDAO(InPtypeManager.this);
 		ptypeDAO = new PtypeDAO(InPtypeManager.this);
@@ -136,6 +136,7 @@ public class InPtypeManager extends Activity {
 
 			public void onClick(DialogInterface dialog, int which) {
 				inputStr = inputServer.getText().toString();
+				int userid = AccountName.getInstance().getCurrentAccountId();
 				int i = (int) itypeDAO.getCount(userid) + 1;
 				if (inputStr.trim().equals("")) {
 					Toast.makeText(InPtypeManager.this, "输入内容不能为空！",
@@ -190,6 +191,7 @@ public class InPtypeManager extends Activity {
 		// 获取选中的行
 		SparseBooleanArray checked = lv.getCheckedItemPositions();
 		List<String> checkList = new ArrayList<String>();
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		for (int i = 0; i < lv.getCount(); i++) {
 			if (checked.get(i) == true) {
 				// 获取到选择的行的数据
@@ -214,7 +216,7 @@ public class InPtypeManager extends Activity {
 	public void refresh() {
 		finish();
 		Intent intentf = new Intent(InPtypeManager.this, InPtypeManager.class);
-		intentf.putExtra("cwp.id", userid);
+//		intentf.putExtra("cwp.id", userid);
 		intentf.putExtra("type", type);
 		startActivity(intentf);
 	}
@@ -222,7 +224,7 @@ public class InPtypeManager extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) { // 监控/拦截/屏蔽返回键
 			Intent intent = new Intent(InPtypeManager.this, MainActivity.class);
-			intent.putExtra("cwp.id", userid);
+//			intent.putExtra("cwp.id", userid);
 			intent.putExtra("cwp.Fragment", "4");// 设置传递数据
 			startActivity(intent);
 			return true;

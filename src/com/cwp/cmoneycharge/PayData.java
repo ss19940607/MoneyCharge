@@ -39,7 +39,7 @@ import cwp.moneycharge.model.ActivityManager;
 import cwp.moneycharge.model.KindData;
 
 public class PayData extends Activity {
-	int userid;
+//	int userid;
 	Intent intentr;
 	PayDAO payDAO;
 	int defaultMonth;
@@ -113,7 +113,8 @@ public class PayData extends Activity {
 	protected void onStart() {
 		super.onStart();
 		intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		defaultMonth = intentr.getIntExtra("default", defaultMonth);
 		defaultYear = intentr.getIntExtra("defaulty", defaultYear);
 		int type = intentr.getIntExtra("type", 0);// 为0，选择上下月，为1，选择任意时间
@@ -221,7 +222,7 @@ public class PayData extends Activity {
 				Intent intentp = new Intent(PayData.this, PayData.class);
 				intentp.putExtra("defaulty", defaultYear);
 				intentp.putExtra("default", defaultMonth);
-				intentp.putExtra("cwp.id", userid);
+//				intentp.putExtra("cwp.id", userid);
 				startActivity(intentp);
 			}
 		});
@@ -240,7 +241,7 @@ public class PayData extends Activity {
 				Intent intentp = new Intent(PayData.this, PayData.class);
 				intentp.putExtra("defaulty", defaultYear);
 				intentp.putExtra("default", defaultMonth);
-				intentp.putExtra("cwp.id", userid);
+//				intentp.putExtra("cwp.id", userid);
 				startActivity(intentp);
 			}
 		});
@@ -256,7 +257,7 @@ public class PayData extends Activity {
 				intentp.putExtra("type", 1);
 				intentp.putExtra("date1", date1);
 				intentp.putExtra("date2", date2);
-				intentp.putExtra("cwp.id", userid);
+//				intentp.putExtra("cwp.id", userid);
 				startActivity(intentp);
 			}
 		});
@@ -283,7 +284,7 @@ public class PayData extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) { // 监控/拦截/屏蔽返回键
 			Intent intent = new Intent(PayData.this, MainActivity.class);
-			intent.putExtra("cwp.id", userid);
+//			intent.putExtra("cwp.id", userid);
 			intent.putExtra("cwp.Fragment", "2");// 设置传递数据
 			startActivity(intent);
 			return true;

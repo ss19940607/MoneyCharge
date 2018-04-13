@@ -37,7 +37,7 @@ public class SettingActivity extends Activity implements
 
 	private CheckBox showVolCheckBox;
 
-	int userid, type;
+	int type;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,8 @@ public class SettingActivity extends Activity implements
 		setContentView(R.layout.voice_setting);
 
 		Intent intentr = getIntent();
-		userid = intentr.getIntExtra("cwp.id", 100000001);
+//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		int userid = AccountName.getInstance().getCurrentAccountId();
 		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
 		startSoundCheckBox = (CheckBox) findViewById(R.id.cb_play_start_sound);
 		startSoundCheckBox.setChecked(Config.PLAY_START_SOUND);
@@ -193,7 +194,7 @@ public class SettingActivity extends Activity implements
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) { // 监控/拦截/屏蔽返回键
 			Intent intent = new Intent(SettingActivity.this, MainActivity.class);
-			intent.putExtra("cwp.id", userid);
+//			intent.putExtra("cwp.id", userid);
 			intent.putExtra("cwp.Fragment", "4");// 设置传递数据
 			startActivity(intent);
 			return true;

@@ -105,7 +105,8 @@ protected void onCreate(Bundle savedInstanceState) {
         case R.id.btnRegister:  
             Intent intent2=new Intent(Login.this,Register.class);  
             startActivity(intent2);  
-            break;  
+            break;
+        
         }  
     }  
       
@@ -124,12 +125,10 @@ protected void onCreate(Bundle savedInstanceState) {
            
            String name = login_username.getText().toString().trim();
            String password = login_password.getText().toString().trim();
-           
-           //单例类,是通过这个单例类来保存用户名和密码数据
           
-           
            Tb_account temp = accountDAO.find(name, password);
            if(temp!=null) {
+        	   //单例类,是通过这个单例类来保存用户名和密码数据
         	   AccountName accountName = AccountName.getInstance();
                accountName.setCurrentAccountId(temp.get_id());
         	   Intent intent3=new Intent(Login.this,MainActivity.class); 
