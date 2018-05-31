@@ -25,7 +25,7 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
 public class FragmentPage2 extends Fragment implements OnClickListener {
-//	static int userid;
+
 	private static FragmentPage1 fragmentPage1;
 	private FragmentPage2 fragmentPage2;
 	private static FragmentPage3 fragmentPage3;
@@ -68,7 +68,6 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		return inflater.inflate(R.layout.fragment_2, null);
 	}
 
@@ -76,7 +75,6 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 		super.onActivityCreated(savedInstanceState);
 
 		Intent intentr = getActivity().getIntent();
-//		userid = intentr.getIntExtra("cwp.id", 100000001);
 		int userid = AccountName.getInstance().getCurrentAccountId();
 		initView();
 		initData();
@@ -136,6 +134,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 		toggleImageView.setOnClickListener(this);
 	}
 
+	
 	@Override
 	public void onClick(View v) {
 		// System.out.println("我按了" + v.getId());
@@ -273,7 +272,7 @@ public class FragmentPage2 extends Fragment implements OnClickListener {
 	}
 
 	/**
-	 * 点击了“与我相关”按钮
+	 * 点击了“报表”按钮
 	 */
 	public static void clickMyfeedBtn() {
 

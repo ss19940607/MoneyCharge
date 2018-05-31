@@ -122,7 +122,6 @@ public class FragmentPage3 extends BaseFrament implements
 					intent.putExtra("cwp.message", new String[] { strno,
 							"btnoutinfo" });// 设置传递数据
 				}
-//				intent.putExtra("cwp.id", userid);
 				intent.putExtra("cwp.frament3", "3");
 				startActivity(intent);// 执行Intent操作
 				return false;
@@ -149,9 +148,7 @@ public class FragmentPage3 extends BaseFrament implements
 			break;
 		}
 		int userid = AccountName.getInstance().getCurrentAccountId();
-//		Intent intentr = getActivity().getIntent();
-//		userid = intentr.getIntExtra("cwp.id", 100000001);
-
+		
 		sum_title.setText(Integer.toString(defaultYear) + "年结余");
 
 		list_income = incomeDAO.getScrollData(userid, 0, // 取每年的收入数据

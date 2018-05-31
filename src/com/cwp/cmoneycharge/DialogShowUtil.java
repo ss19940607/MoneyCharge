@@ -25,6 +25,7 @@ public class DialogShowUtil {
 
 	public void dialogShow(String showtype, String style,
 			final String context1, String context2) {
+		//////// 看不懂该方法是什么用处，Nifty极好的，Dialog会话框，显示极好的对话框
 		dialogBuilder = new NiftyDialogBuilder(ctx, R.style.dialog_untran); // 自定义dialogBuilder
 		switch (showtype) {
 		case "rotatebottom":
@@ -43,7 +44,7 @@ public class DialogShowUtil {
 					// def
 					.withDividerColor("#11000000")
 					// def
-					.withMessage("语音格式：\n早餐在餐厅食了5元。\n\n")
+					.withMessage("语音格式：\n午餐在西食堂食了10元。\n\n")
 					// .withMessage(null) no Msg
 					.withMessageColor("#FFFFFF")
 					// def
@@ -63,8 +64,8 @@ public class DialogShowUtil {
 						@Override
 						public void onClick(View v) {
 							dialogBuilder.dismiss();
-							((AddPay) act).VoiceRecognition();
-						}
+							((AddPay) act).VoiceRecognition();      /////////////这种写法很奇特，不是特别常见
+						}  
 					}).show();
 			break;
 		case "notype":

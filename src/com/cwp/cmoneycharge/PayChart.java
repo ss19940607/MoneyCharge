@@ -362,6 +362,7 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 	 * Description:初始化转盘的颜色
 	 * 
 	 */
+	
 	public void initItem() {
 		int i = 0;
 		int fivecolor[] = new int[] { Color.rgb(56, 220, 244), Color.GREEN,
@@ -369,7 +370,6 @@ public class PayChart extends SlidingActivity implements OnClickListener {
 		int userid = AccountName.getInstance().getCurrentAccountId();
 		if (KindDatap.size() == 0) { // 没有数据的情况
 			amount = "暂无数据"; // 无数据下总数的提示文字
-
 		} else { // 获取数据的情况
 			double sum = 0.00;
 			for (KindData kp : KindDatap) {

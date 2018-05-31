@@ -7,7 +7,9 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
 
 /**
+ * 
  * Created by lee on 2014/7/31.
+ * 
  */
 public class RotateBottom extends BaseEffects{
 

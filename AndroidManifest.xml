@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="18" />
-    <!-- permission权限配置，比如可以访问网络，可以使用wifi,可以打电话 -->
+    <!-- permission权限配置，比如可以访问网络，可以使用wifi,可以打电话 ，这里也包括可以使用百度语音的一些配置-->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

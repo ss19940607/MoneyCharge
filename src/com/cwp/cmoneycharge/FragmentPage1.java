@@ -99,7 +99,7 @@ public class FragmentPage1 extends BaseFrament {
 			// 覆写onItemClick方法
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+					int position, long id){
 				TextView txno = (TextView) view.findViewById(R.id.no);
 				TextView txkind = (TextView) view.findViewById(R.id.kind);
 				String strtype = ((String) txkind.getText()).substring(1,

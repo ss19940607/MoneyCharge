@@ -217,15 +217,15 @@ public class PtypeDAO {
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
 				new String[] { String.valueOf(id), "3", "晚餐" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "4", "夜宵" });
+				new String[] { String.valueOf(id), "4", "学费" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "5", "生活用品" });
+				new String[] { String.valueOf(id), "5", "夜宵" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "6", "工作用品" });
+				new String[] { String.valueOf(id), "6", "生活用品" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "7", "衣服" });
+				new String[] { String.valueOf(id), "7", "学习用品" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "8", "应酬" });
+				new String[] { String.valueOf(id), "8", "衣服" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
 				new String[] { String.valueOf(id), "9", "电子产品" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
@@ -233,14 +233,16 @@ public class PtypeDAO {
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
 				new String[] { String.valueOf(id), "11", "租金" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "12", "股票" });
+				new String[] { String.valueOf(id), "12", "充话费" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "13", "打的" });
+				new String[] { String.valueOf(id), "13", "充一卡通" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "14", "基金" });
+				new String[] { String.valueOf(id), "14", "打的" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
-				new String[] { String.valueOf(id), "15", "其他" });
+				new String[] { String.valueOf(id), "15", "充公交卡" });
 		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
 				new String[] { String.valueOf(id), "16", "语音识别" });
+		db.execSQL("insert into tb_ptype(_id,no,typename) values(?,?,?)",
+				new String[] { String.valueOf(id), "17", "其他" });
 	}
 }

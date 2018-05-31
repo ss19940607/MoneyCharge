@@ -87,7 +87,9 @@ ItypeDAO itypeDAO = new ItypeDAO(Register.this);
                 }  
                 
                 String username = register_username.getText().toString().trim();
-                String passwd = register_passwd.getText().toString().trim();
+                String passwd1 = register_passwd.getText().toString().trim();
+                //加密密码存进数据库
+                String passwd = MD5utils.string2MD5(passwd1);
                 
                 Tb_account tb_account = new Tb_account();
                 tb_account.setUsername(username);
@@ -107,7 +109,8 @@ ItypeDAO itypeDAO = new ItypeDAO(Register.this);
                 }
             }  
               
-        });  
+        }); 
+        SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
     }  
       
     private boolean checkEdit(){  

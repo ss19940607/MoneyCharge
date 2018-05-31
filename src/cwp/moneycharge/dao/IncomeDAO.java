@@ -27,7 +27,7 @@ public class IncomeDAO {
 	private DBOpenHelper helper;// 创建DBOpenHelper对象
 	private SQLiteDatabase db;// 创建SQLiteDatabase对象
 	private int no = 1;// 编号
-//	private int userid = 100000001;
+
 
 	public IncomeDAO(Context context) {
 		// TODO Auto-generated constructor stub

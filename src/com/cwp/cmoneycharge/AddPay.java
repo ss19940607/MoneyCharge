@@ -66,8 +66,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class AddPay extends Activity implements AMapLocationListener,
-		OnClickListener {
+public class AddPay extends Activity implements AMapLocationListener, OnClickListener {
 	protected static final int DATE_DIALOG_ID = 0;// 创建日期对话框常量
 	static String type = "pay";
 	String VoiceDefault = "";
@@ -77,10 +76,10 @@ public class AddPay extends Activity implements AMapLocationListener,
 	Button btnSaveButton;// 创建Button对象“保存”
 	Button btnCancelButton;// 创建Button对象“取消”
 	Button btnVoice;// 创建Button对象“语音识别”
-//	int userid;
+	// int userid;
 	int Selection = 0;
 	Bundle bundle = null;
-	String[] strInfos = null;// 定义字符串数组
+	String[] strInfos = null;// 定义字符串数组g'
 	String strno, strType;// 定义两个字符串变量，分别用来记录信息编号和管理类型
 	private FrameLayout corporation_fl, address_fl = null;
 	private RadioButton rb1 = null;
@@ -138,7 +137,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.add);// 设置布局文件
 
-		SysApplication.getInstance().addActivity(this); //在销毁队列中添加this
+		SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
 		super.onStart();// 实现基类中的方法
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -182,7 +181,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		addphoto.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(AddPay.this, PublishedActivity.class);
-//				intent.putExtra("cwp.id", userid);
+				// intent.putExtra("cwp.id", userid);
 				startActivityForResult(intent, 102);
 			}
 		});
@@ -208,7 +207,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 				} else {
 					intent = new Intent(AddPay.this, MainActivity.class);
 				}
-//				intent.putExtra("cwp.id", userid);
+				// intent.putExtra("cwp.id", userid);
 				startActivity(intent);
 				finish();// 这个是关键
 			}
@@ -218,8 +217,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 			@Override
 			public void onResults(Bundle results) {
-				ArrayList<String> rs = results != null ? results
-						.getStringArrayList(RESULTS_RECOGNITION) : null;
+				ArrayList<String> rs = results != null ? results.getStringArrayList(RESULTS_RECOGNITION) : null;
 				if (rs != null && rs.size() > 0) {
 					Recognition(rs.get(0)); // 把识别数据传入识别方法
 					// Toast.makeText(AddPay.this, rs.get(0),
@@ -233,8 +231,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 		rb1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 				if (rb1.isChecked()) { // 支出
 					type = "pay";
@@ -308,8 +305,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 				rb2.setClickable(false);
 				spdatalist = itypeDAO.getItypeName(userid);
 				// 根据编号查找收入信息，并存储到Tb_pay对象中
-				Tb_income tb_income = incomeDAO.find(userid,
-						Integer.parseInt(strno));
+				Tb_income tb_income = incomeDAO.find(userid, Integer.parseInt(strno));
 				txtMoney.setText(tb_income.getMoney2());// 显示金额
 				txtMoney.setTextColor(Color.parseColor("#ffff0000"));
 				txtTime.setText(tb_income.getTime());// 显示时间
@@ -361,8 +357,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		int userid = AccountName.getInstance().getCurrentAccountId();
 		initData(userid);
 		spdata = spdatalist.toArray(new String[spdatalist.size()]);// 在tb_itype中按用户id读取
-		adapter = new ArrayAdapter<String>(AddPay.this, R.layout.spinner,
-				spdata); // 动态生成收入类型列表
+		adapter = new ArrayAdapter<String>(AddPay.this, R.layout.spinner, spdata); // 动态生成收入类型列表
 		spType.setAdapter(adapter);
 		if (Selection > 0) {
 			spType.setSelection(Selection);// 显示类别
@@ -373,12 +368,12 @@ public class AddPay extends Activity implements AMapLocationListener,
 	protected void onStart() { // 复写onstart
 		super.onStart();// 实现基类中的方法
 		updateDisplay();// 显示当前系统时间
-		
-		//intent实现Activity之间的交流，通讯，跳转
-		//取得启动该Activity的Intent对象,这个对象是由FragmentPage1的Activity跳转过来的
+
+		// intent实现Activity之间的交流，通讯，跳转
+		// 取得启动该Activity的Intent对象,这个对象是由FragmentPage1的Activity跳转过来的
 		Intent intentr = getIntent();
-        /*取出Intent中附加的数据*/
-//		userid = intentr.getIntExtra("cwp.id", 100000001);
+		/* 取出Intent中附加的数据 */
+		// userid = intentr.getIntExtra("cwp.id", 100000001);
 		int userid = AccountName.getInstance().getCurrentAccountId();
 		bundle = intentr.getExtras();// 获取传入的数据，并使用Bundle记录
 		if (bundle.containsKey("cwp.message")) {
@@ -415,7 +410,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		if (bundle.containsKey("keyboard")) { // 进来显示键盘
 			if (keycount) {
 				InputMethodManager imm = (InputMethodManager) getSystemService(AddPay.this.INPUT_METHOD_SERVICE); // 显示键盘
-				imm.hideSoftInputFromWindow(txtMoney.getWindowToken(), 0); // 隐藏键盘　
+				imm.hideSoftInputFromWindow(txtMoney.getWindowToken(), 0); // 隐藏键盘
 				keyBoard.showKeyboard();
 				keycount = false;
 			}
@@ -434,7 +429,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				InputMethodManager imm = (InputMethodManager) getSystemService(AddPay.this.INPUT_METHOD_SERVICE); // 显示键盘
-				imm.hideSoftInputFromWindow(txtMoney.getWindowToken(), 0); // 隐藏键盘　
+				imm.hideSoftInputFromWindow(txtMoney.getWindowToken(), 0); // 隐藏键盘
 				keyBoard.showKeyboard();
 				return false;
 			}
@@ -444,149 +439,122 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 			@Override
 			public void onClick(View v) {
+				//////////// dialogShowUtil是干嘛的，语音识别跟这个方法的联系是什么呢？
+				//////////// 感觉更像是一个动画效果，用来展示点击了语音识别之后要弹出的一系列对话框，根据用户的不同行为弹出不同的效果图
 				dialogShowUtil.dialogShow("rotatebottom", "first", "", "");
 			}
 		});
 
 		btnSaveButton.setOnClickListener(new OnClickListener() {// 为保存按钮设置监听事件
-					private String textreAddres;
-					private String textreMark;
+			private String textreAddres;
+			private String textreMark;
 
-					@SuppressLint("NewApi")
-					@Override
-					public void onClick(View arg0) {
-						int userid = AccountName.getInstance().getCurrentAccountId();
-						textreAddres = txtAddress.getText().toString();
-						textreMark = txtMark.getText().toString();
-						if (textphoto == null) {
-							textphoto = "";
-						}
-						if (typemode == "add") { // 添加模式
-							String strMoney = txtMoney.getText().toString();// 获取金额文本框的值
-							if (type == "pay") { // 支出
-								if (!strMoney.isEmpty()) {// 判断金额不为空
-									// 创建InaccountDAO对象
-									PayDAO payDAO = new PayDAO(AddPay.this);
-									int ptype =spType.getSelectedItemPosition()+1;
-									// 创建Tb_inaccount对象
-									Tb_pay tb_pay = new Tb_pay(
-											userid,
-											payDAO.getMaxNo(userid) + 1,
-											get2Double(strMoney),
-											setTimeFormat(null),
-											ptype,
-											textreAddres, textreMark, textphoto);
-									payDAO.add(tb_pay);// 添加收入信息
-									Toast.makeText(AddPay.this,
-											"〖新增收入〗数据添加成功！", Toast.LENGTH_SHORT)
-											.show();
-									gotoback();
-								} else {
-									Toast.makeText(AddPay.this, "请输入收入金额！",
-											Toast.LENGTH_SHORT).show();
-								}
-							} else { // 收入
-								if (!strMoney.isEmpty()) {// 判断金额不为空
-									// 创建InaccountDAO对象
-									IncomeDAO incomeDAO = new IncomeDAO(
-											AddPay.this);
-									// 创建Tb_inaccount对象
-									Tb_income tb_income = new Tb_income(
-											userid,
-											payDAO.getMaxNo(userid) + 1,
-											get2Double(strMoney),
-											setTimeFormat(null),
-											(spType.getSelectedItemPosition() + 1),
-											// txtInhandler.getText().toString(),
-											textreAddres, textreMark,
-											textphoto, "支出");
-									incomeDAO.add(tb_income);// 添加收入信息
-									// 弹出信息提示
-									Toast.makeText(AddPay.this,
-											"〖新增收入〗数据添加成功！", Toast.LENGTH_SHORT)
-											.show();
-									gotoback();
-								} else {
-									Toast.makeText(AddPay.this, "请输入收入金额！",
-											Toast.LENGTH_SHORT).show();
-								}
-							}
-						} else { // 修改模式
-							if (type == "pay") { // 支出
-								if (!txtMoney.getText().toString().isEmpty()) {// 判断金额不为空
-									Tb_pay tb_pay = new Tb_pay(); // 创建Tb_pay对象
-									tb_pay.set_id(userid); // 设置userid
-									tb_pay.setNo(Integer.parseInt(strno)); // 设置编号
-									tb_pay.setMoney(get2Double(txtMoney
-											.getText().toString()));// 设置金额
-									tb_pay.setTime(setTimeFormat(txtTime
-											.getText().toString()));// 设置时间
-									tb_pay.setType(spType
-											.getSelectedItemPosition() + 1);// 设置类别
-									tb_pay.setAddress(textreAddres);// 设置地点
-									tb_pay.setMark(textreMark);// 设置备注
-									tb_pay.setPhoto(textphoto);// 设置备注
-									payDAO.update(tb_pay);// 更新支出信息
-									Toast.makeText(AddPay.this, "〖数据〗修改成功！",
-											Toast.LENGTH_SHORT).show();
-									gotoback();
-								} else {
-									Toast.makeText(AddPay.this, "请输入收入金额！",
-											Toast.LENGTH_SHORT).show();
-								}
-							} else { // 收入
-								if (!txtMoney.getText().toString().isEmpty()) {// 判断金额不为空
-									Tb_income tb_income = new Tb_income();// 创建Tb_income对象
-									tb_income.set_id(userid);// 设置编号
-									tb_income.setNo(Integer.parseInt(strno));// 设置编号
-									tb_income.setMoney(get2Double(txtMoney
-											.getText().toString()));// 设置金额
-									tb_income.setTime(setTimeFormat(txtTime
-											.getText().toString()));// 设置时间
-									tb_income.setType(spType
-											.getSelectedItemPosition() + 1);// 设置类别
-									tb_income.setHandler(textreAddres);// 设置付款方
-									tb_income.setMark(textreMark);// 设置备注
-									tb_income.setPhoto(textphoto);// 设置备注
-									incomeDAO.update(tb_income);// 更新收入信息
-									Toast.makeText(AddPay.this, "〖数据〗修改成功！",
-											Toast.LENGTH_SHORT).show();
-									gotoback();
-								} else {
-									Toast.makeText(AddPay.this, "请输入收入金额！",
-											Toast.LENGTH_SHORT).show();
-								}
-							}
-						}
-					}
-				});
-		btnCancelButton.setOnClickListener(new OnClickListener() {// 为取消按钮设置单击监听事件
-					@Override
-					public void onClick(View arg0) {
-						int userid = AccountName.getInstance().getCurrentAccountId();
-						if (typemode == "add") { // 添加模式执行返回
-							txtMoney.setText("");// 设置金额文本框为空
-							txtMoney.setHint("0.00");// 为金额文本框设置提示
-							txtTime.setText("");// 设置时间文本框为空
-							txtAddress.setText("");// 设置地址文本框为空
-							txtMark.setText("");// 设置备注文本框为空
-							// txtInhandler.setText("");// 设置备注文本框为空
-							spType.setSelection(0);// 设置类别下拉列表默认选择第一项
+			@SuppressLint("NewApi")
+			@Override
+			public void onClick(View arg0) {
+				int userid = AccountName.getInstance().getCurrentAccountId();
+				textreAddres = txtAddress.getText().toString();
+				textreMark = txtMark.getText().toString();
+				if (textphoto == null) {
+					textphoto = "";
+				}
+				if (typemode == "add") { // 添加模式
+					String strMoney = txtMoney.getText().toString();// 获取金额文本框的值
+					if (type == "pay") { // 支出
+						if (!strMoney.isEmpty()) {// 判断金额不为空
+							// 创建InaccountDAO对象
+							PayDAO payDAO = new PayDAO(AddPay.this);
+							int ptype = spType.getSelectedItemPosition() + 1;
+							// 创建Tb_inaccount对象
+							Tb_pay tb_pay = new Tb_pay(userid, payDAO.getMaxNo(userid) + 1, get2Double(strMoney),
+									setTimeFormat(null), ptype, textreAddres, textreMark, textphoto);
+							payDAO.add(tb_pay);// 添加收入信息
+							Toast.makeText(AddPay.this, "〖新增收入〗数据添加成功！", Toast.LENGTH_SHORT).show();
 							gotoback();
-						} else { // 修改模式执行删除
-							if (type == "pay") { // 支出
-								payDAO.detele(userid, Integer.parseInt(strno));// 根据编号删除支出信息
-								gotoback();
-							} else { // 收入
-								incomeDAO.detele(userid,
-										Integer.parseInt(strno));// 根据编号删除收入信息
-								gotoback();
-							}
-							Toast.makeText(AddPay.this, "〖数据〗删除成功！",
-									Toast.LENGTH_SHORT).show();
+						} else {
+							Toast.makeText(AddPay.this, "请输入收入金额！", Toast.LENGTH_SHORT).show();
+						}
+					} else { // 收入
+						if (!strMoney.isEmpty()) {// 判断金额不为空
+							// 创建InaccountDAO对象
+							IncomeDAO incomeDAO = new IncomeDAO(AddPay.this);
+							// 创建Tb_inaccount对象
+							Tb_income tb_income = new Tb_income(userid, payDAO.getMaxNo(userid) + 1,
+									get2Double(strMoney), setTimeFormat(null), (spType.getSelectedItemPosition() + 1),
+									// txtInhandler.getText().toString(),
+									textreAddres, textreMark, textphoto, "支出");
+							incomeDAO.add(tb_income);// 添加收入信息
+							// 弹出信息提示
+							Toast.makeText(AddPay.this, "〖新增收入〗数据添加成功！", Toast.LENGTH_SHORT).show();
+							gotoback();
+						} else {
+							Toast.makeText(AddPay.this, "请输入收入金额！", Toast.LENGTH_SHORT).show();
 						}
 					}
-				});
+				} else { // 修改模式
+					if (type == "pay") { // 支出
+						if (!txtMoney.getText().toString().isEmpty()) {// 判断金额不为空
+							Tb_pay tb_pay = new Tb_pay(); // 创建Tb_pay对象
+							tb_pay.set_id(userid); // 设置userid
+							tb_pay.setNo(Integer.parseInt(strno)); // 设置编号
+							tb_pay.setMoney(get2Double(txtMoney.getText().toString()));// 设置金额
+							tb_pay.setTime(setTimeFormat(txtTime.getText().toString()));// 设置时间
+							tb_pay.setType(spType.getSelectedItemPosition() + 1);// 设置类别
+							tb_pay.setAddress(textreAddres);// 设置地点
+							tb_pay.setMark(textreMark);// 设置备注
+							tb_pay.setPhoto(textphoto);// 设置备注
+							payDAO.update(tb_pay);// 更新支出信息
+							Toast.makeText(AddPay.this, "〖数据〗修改成功！", Toast.LENGTH_SHORT).show();
+							gotoback();
+						} else {
+							Toast.makeText(AddPay.this, "请输入收入金额！", Toast.LENGTH_SHORT).show();
+						}
+					} else { // 收入
+						if (!txtMoney.getText().toString().isEmpty()) {// 判断金额不为空
+							Tb_income tb_income = new Tb_income();// 创建Tb_income对象
+							tb_income.set_id(userid);// 设置编号
+							tb_income.setNo(Integer.parseInt(strno));// 设置编号
+							tb_income.setMoney(get2Double(txtMoney.getText().toString()));// 设置金额
+							tb_income.setTime(setTimeFormat(txtTime.getText().toString()));// 设置时间
+							tb_income.setType(spType.getSelectedItemPosition() + 1);// 设置类别
+							tb_income.setHandler(textreAddres);// 设置付款方
+							tb_income.setMark(textreMark);// 设置备注
+							tb_income.setPhoto(textphoto);// 设置备注
+							incomeDAO.update(tb_income);// 更新收入信息
+							Toast.makeText(AddPay.this, "〖数据〗修改成功！", Toast.LENGTH_SHORT).show();
+							gotoback();
+						} else {
+							Toast.makeText(AddPay.this, "请输入收入金额！", Toast.LENGTH_SHORT).show();
+						}
+					}
+				}
+			}
+		});
+		btnCancelButton.setOnClickListener(new OnClickListener() {// 为取消按钮设置单击监听事件
+			@Override
+			public void onClick(View arg0) {
+				int userid = AccountName.getInstance().getCurrentAccountId();
+				if (typemode == "add") { // 添加模式执行返回
+					txtMoney.setText("");// 设置金额文本框为空
+					txtMoney.setHint("0.00");// 为金额文本框设置提示
+					txtTime.setText("");// 设置时间文本框为空
+					txtAddress.setText("");// 设置地址文本框为空
+					txtMark.setText("");// 设置备注文本框为空
+					// txtInhandler.setText("");// 设置备注文本框为空
+					spType.setSelection(0);// 设置类别下拉列表默认选择第一项
+					gotoback();
+				} else { // 修改模式执行删除
+					if (type == "pay") { // 支出
+						payDAO.detele(userid, Integer.parseInt(strno));// 根据编号删除支出信息
+						gotoback();
+					} else { // 收入
+						incomeDAO.detele(userid, Integer.parseInt(strno));// 根据编号删除收入信息
+						gotoback();
+					}
+					Toast.makeText(AddPay.this, "〖数据〗删除成功！", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
 	}
 
 	// 保留2位小数
@@ -601,15 +569,13 @@ public class AddPay extends Activity implements AMapLocationListener,
 	{
 		switch (id) {
 		case DATE_DIALOG_ID:// 弹出日期选择对话框
-			return new DatePickerDialog(this, mDateSetListener, mYear, mMonth,
-					mDay);
+			return new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
 		}
 		return null;
 	}
 
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-		public void onDateSet(DatePicker view, int year, int monthOfYear,
-				int dayOfMonth) {
+		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 			mYear = year;// 为年份赋值
 			mMonth = monthOfYear;// 为月份赋值
 			mDay = dayOfMonth;// 为天赋值
@@ -620,8 +586,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 	private void updateDisplay() {
 		// 显示设置的时间
 
-		txtTime.setText(new StringBuilder().append(mYear).append("-")
-				.append(mMonth + 1).append("-").append(mDay));
+		txtTime.setText(new StringBuilder().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay));
 
 	}
 
@@ -659,7 +624,8 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 	}
 
-	void VoiceRecognition() { // 调用百度语音识别
+	void VoiceRecognition() {
+		// 调用百度语音识别
 		// mResult.setText(null);
 		mCurrentTheme = Config.DIALOG_THEME;
 		if (mDialog != null) {
@@ -667,8 +633,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 		}
 		Bundle params = new Bundle();
 		params.putString(BaiduASRDigitalDialog.PARAM_API_KEY, Constants.API_KEY); // 百度语音api_key
-		params.putString(BaiduASRDigitalDialog.PARAM_SECRET_KEY,
-				Constants.SECRET_KEY);
+		params.putString(BaiduASRDigitalDialog.PARAM_SECRET_KEY, Constants.SECRET_KEY);
 		params.putInt(BaiduASRDigitalDialog.PARAM_DIALOG_THEME, // 百度语音主题
 				Config.DIALOG_THEME);
 		mDialog = new BaiduASRDigitalDialog(this, params);
@@ -679,14 +644,9 @@ public class AddPay extends Activity implements AMapLocationListener,
 				Config.getCurrentLanguage());
 		mDialog.getParams().putBoolean(
 				// 百度识别音效相关
-				BaiduASRDigitalDialog.PARAM_START_TONE_ENABLE,
-				Config.PLAY_START_SOUND);
-		mDialog.getParams().putBoolean(
-				BaiduASRDigitalDialog.PARAM_END_TONE_ENABLE,
-				Config.PLAY_END_SOUND);
-		mDialog.getParams().putBoolean(
-				BaiduASRDigitalDialog.PARAM_TIPS_TONE_ENABLE,
-				Config.DIALOG_TIPS_SOUND);
+				BaiduASRDigitalDialog.PARAM_START_TONE_ENABLE, Config.PLAY_START_SOUND);
+		mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_END_TONE_ENABLE, Config.PLAY_END_SOUND);
+		mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_TIPS_TONE_ENABLE, Config.DIALOG_TIPS_SOUND);
 		mDialog.show();
 	}
 
@@ -731,8 +691,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 				// 选择列表初始化
 				spdatalist = ptypeDAO.getPtypeName(userid);
 				spdata = spdatalist.toArray(new String[spdatalist.size()]);// 在tb_itype中按用户id读取
-				adapter = new ArrayAdapter<String>(AddPay.this,
-						R.layout.spinner, spdata); // 动态生成收入类型列表
+				adapter = new ArrayAdapter<String>(AddPay.this, R.layout.spinner, spdata); // 动态生成收入类型列表
 				spType.setAdapter(adapter);
 				txtMoney.setText(VoiceSave[1]);// 显示金额
 				txtMoney.setTextColor(Color.parseColor("#5ea98d"));
@@ -747,8 +706,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 				rb2.setChecked(true);
 				spdatalist = itypeDAO.getItypeName(userid);
 				spdata = spdatalist.toArray(new String[spdatalist.size()]);// 在tb_itype中按用户id读取
-				adapter = new ArrayAdapter<String>(AddPay.this,
-						R.layout.spinner, spdata); // 动态生成收入类型列表
+				adapter = new ArrayAdapter<String>(AddPay.this, R.layout.spinner, spdata); // 动态生成收入类型列表
 				spType.setAdapter(adapter);
 				txtMoney.setText(VoiceSave[1]);// 显示金额
 				txtMoney.setTextColor(Color.parseColor("#ffff0000"));
@@ -876,8 +834,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 			}
 		} else {
 			if (!((intype || outtype) || ismoney)) { // 如果不含金额
-				w = "**提示：\n你的话中没有包含<类别>（" + listToString(spdatalist, '，')
-						+ "，" + listToString(spdatalist2, '，')
+				w = "**提示：\n你的话中没有包含<类别>（" + listToString(spdatalist, '，') + "，" + listToString(spdatalist2, '，')
 						+ "）\n\n**提示：\n你的话中没有包含消费或开支的<金额>";
 				dialogShowUtil.dialogShow("shake", "wrong", t, w);
 			} else if ((intype || outtype) && (!ismoney)) {
@@ -890,8 +847,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 						VoiceSave[3] = "语音识别";
 					}
 				}
-				w = "**提示：\n你的话中没有包含<（默认）类别>（" + listToString(spdatalist, '，')
-						+ "）\n\n\n将会记录为<语音识别>类别，是否依然记录？\n";
+				w = "**提示：\n你的话中没有包含<（默认）类别>（" + listToString(spdatalist, '，') + "）\n\n\n将会记录为<语音识别>类别，是否依然记录？\n";
 				dialogShowUtil.dialogShow("shake", "notype", t, w);
 			} else {
 				dialogShowUtil.dialogShow("rotatebottom", "OK", t, w);
@@ -930,7 +886,7 @@ public class AddPay extends Activity implements AMapLocationListener,
 			intent = new Intent(AddPay.this, MainActivity.class);
 			intent.putExtra("cwp.Fragment", "1");
 		}
-//		intent.putExtra("cwp.id", userid);
+		// intent.putExtra("cwp.id", userid);
 		startActivity(intent);
 		finish();
 		return true;
@@ -965,12 +921,10 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 	protected void onResume() {
 		super.onResume();
-		SharedPreferences sp = this.getSharedPreferences("preferences",
-				MODE_WORLD_READABLE);
+		SharedPreferences sp = this.getSharedPreferences("preferences", MODE_WORLD_READABLE);
 		CrashApplication myApplaction = (CrashApplication) getApplication();
-		if ((myApplaction.isLocked)
-				&& (sp.getString("gesturepw", "").equals("开"))) {// 判断是否需要跳转到密码界面
-			
+		if ((myApplaction.isLocked) && (sp.getString("gesturepw", "").equals("开"))) {// 判断是否需要跳转到密码界面
+
 		}
 	}
 
@@ -992,15 +946,12 @@ public class AddPay extends Activity implements AMapLocationListener,
 
 	@Override
 	public void onLocationChanged(AMapLocation amapLocation) {
-		if (amapLocation != null
-				&& amapLocation.getAMapException().getErrorCode() == 0) {
+		if (amapLocation != null && amapLocation.getAMapException().getErrorCode() == 0) {
 			// 定位成功回调信息，设置相关消息
-			txtAddress.setText(amapLocation.getPoiName() + " [ "
-					+ amapLocation.getAddress() + " 区号："
+			txtAddress.setText(amapLocation.getPoiName() + " [ " + amapLocation.getAddress() + " 区号："
 					+ amapLocation.getCityCode() + " ]");
 		} else {
-			Log.e("AmapErr", "Location ERR:"
-					+ amapLocation.getAMapException().getErrorCode());
+			Log.e("AmapErr", "Location ERR:" + amapLocation.getAMapException().getErrorCode());
 		}
 	}
 
@@ -1011,9 +962,8 @@ public class AddPay extends Activity implements AMapLocationListener,
 			// 注意更换定位时间后，需要先将定位请求删除，再进行定位请求
 			mLocationManagerProxy.removeUpdates(this);
 			int randomTime = mRandom.nextInt(1000);
-			mLocationManagerProxy.requestLocationData(
-					LocationProviderProxy.AMapNetwork, 60 * 1000 + randomTime,
-					15, this);
+			mLocationManagerProxy.requestLocationData(LocationProviderProxy.AMapNetwork, 60 * 1000 + randomTime, 15,
+					this);
 			mLocationManagerProxy.setGpsEnable(false);
 			break;
 		}

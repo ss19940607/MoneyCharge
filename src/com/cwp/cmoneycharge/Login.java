@@ -46,7 +46,7 @@ protected void onCreate(Bundle savedInstanceState) {
     
     setContentView(R.layout.login);  
     initWidget();  
-  
+    SysApplication.getInstance().addActivity(this); // 在销毁队列中添加this
 }  
     private void initWidget()  
     {  
@@ -59,10 +59,9 @@ protected void onCreate(Bundle savedInstanceState) {
         login_username.setOnFocusChangeListener(new OnFocusChangeListener()  
         {  
         	//验证用户名输入的格式是否正确
-  
             @Override  
             public void onFocusChange(View v, boolean hasFocus) {  
-               
+                
                 if(!hasFocus){  
                     String username=login_username.getText().toString().trim();  
                     if(username.length()<4){  
@@ -77,7 +76,7 @@ protected void onCreate(Bundle savedInstanceState) {
         	//验证密码输入的格式是否正确
             @Override  
             public void onFocusChange(View v, boolean hasFocus) {  
-               
+                
                 if(!hasFocus){  
                     String password=login_password.getText().toString().trim();  
                     if(password.length()<4){  
@@ -124,7 +123,9 @@ protected void onCreate(Bundle savedInstanceState) {
     private void login(){  
            
            String name = login_username.getText().toString().trim();
-           String password = login_password.getText().toString().trim();
+           String password1 = login_password.getText().toString().trim();
+           //这里是要先将从界面上取到的密码先加密一次然后再从数据库里面取数据对比才能是一致的，由于注册的时候加入数据库里的数据是加密之后存进去的
+           String password = MD5utils.string2MD5(password1);
           
            Tb_account temp = accountDAO.find(name, password);
            if(temp!=null) {
